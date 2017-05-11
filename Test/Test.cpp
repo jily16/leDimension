@@ -63,14 +63,14 @@ int main()
 		length l(1);
 		scalar s(1);
 		l *= s;
-		quality<dimension<0, 2, 0, 0, 0, 0, 0>> l_square = l*l;
+		quantity<dimension<0, 2, 0, 0, 0, 0, 0>> l_square = l*l;
 		LE_ASSERT(l_square.value == 1);
 	}
 	{
 		length l(4);
 		(l /= 2) /= 2;
 		auto rat = l / (length(0.5));
-		quality<dimension<0, 1, -1, 0, 0, 0, 0>> mps = l / (time(1));
+		quantity<dimension<0, 1, -1, 0, 0, 0, 0>> mps = l / (time(1));
 		LE_ASSERT(rat.value == 2 && mps.value == 1);
 	}
 	{

@@ -52,46 +52,46 @@ namespace le
 	};
 
 	template<typename _Dimension>
-	struct quality;
+	struct quantity;
 
-	typedef quality<dimension<0, 0, 0, 0, 0, 0, 0>> scalar;
-	typedef quality<dimension<1, 0, 0, 0, 0, 0, 0>> mass;			//Kg
-	typedef quality<dimension<0, 1, 0, 0, 0, 0, 0>> length;			//m
-	typedef quality<dimension<0, 0, 1, 0, 0, 0, 0>> time;			//s
-	typedef quality<dimension<0, 0, 0, 1, 0, 0, 0>> current;		//A
-	typedef quality<dimension<0, 0, 0, 0, 1, 0, 0>> temperature;	//K
-	typedef quality<dimension<0, 0, 0, 0, 0, 1, 0>> illumination;	//cd
-	typedef quality<dimension<0, 0, 0, 0, 0, 0, 1>> AOS;			//mol
+	typedef quantity<dimension<0, 0, 0, 0, 0, 0, 0>> scalar;
+	typedef quantity<dimension<1, 0, 0, 0, 0, 0, 0>> mass;			//Kg
+	typedef quantity<dimension<0, 1, 0, 0, 0, 0, 0>> length;			//m
+	typedef quantity<dimension<0, 0, 1, 0, 0, 0, 0>> time;			//s
+	typedef quantity<dimension<0, 0, 0, 1, 0, 0, 0>> current;		//A
+	typedef quantity<dimension<0, 0, 0, 0, 1, 0, 0>> temperature;	//K
+	typedef quantity<dimension<0, 0, 0, 0, 0, 1, 0>> illumination;	//cd
+	typedef quantity<dimension<0, 0, 0, 0, 0, 0, 1>> AOS;			//mol
 
 	template<typename _Dimension>
-	struct quality
+	struct quantity
 	{
 		typedef _Dimension type;
 		double value;
-		explicit quality(double const &_V) :value(_V)
+		explicit quantity(double const &_V) :value(_V)
 		{}
-		quality &operator=(quality const &_Other);
-		quality &operator+=(quality const &_Other);
-		quality &operator+=(double const &_V);
-		quality &operator-=(quality const &_Other);
-		quality &operator-=(double const &_V);
-		quality &operator*=(scalar const &_S);
-		quality &operator*=(double const &_V);
-		quality &operator/=(scalar const &_S);
-		quality &operator/=(double const &_V);
+		quantity &operator=(quantity const &_Other);
+		quantity &operator+=(quantity const &_Other);
+		quantity &operator+=(double const &_V);
+		quantity &operator-=(quantity const &_Other);
+		quantity &operator-=(double const &_V);
+		quantity &operator*=(scalar const &_S);
+		quantity &operator*=(double const &_V);
+		quantity &operator/=(scalar const &_S);
+		quantity &operator/=(double const &_V);
 	};
 
 	template<typename _Dimension>
-	quality<_Dimension> operator+(
-		quality<_Dimension> const &_Q1,
-		quality<_Dimension> const &_Q2)
+	quantity<_Dimension> operator+(
+		quantity<_Dimension> const &_Q1,
+		quantity<_Dimension> const &_Q2)
 	{
-		return quality<_Dimension>(_Q1.value + _Q2.value);
+		return quantity<_Dimension>(_Q1.value + _Q2.value);
 	}
 
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator=(quality<_Dimension> const & _Other)
+	inline quantity<_Dimension> & quantity<_Dimension>::operator=(quantity<_Dimension> const & _Other)
 	{
 		if (this == &_Other) return *this;
 		this->value = _Other.value;
@@ -99,31 +99,31 @@ namespace le
 	}
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator+=(
-		quality<_Dimension> const &_Other)
+	inline quantity<_Dimension> & quantity<_Dimension>::operator+=(
+		quantity<_Dimension> const &_Other)
 	{
 		this->value += _Other.value;
 		return *this;
 	}
 
 	template<typename _Dimension>
-	quality<_Dimension> operator+(
-		quality<_Dimension> const &_Q,
+	quantity<_Dimension> operator+(
+		quantity<_Dimension> const &_Q,
 		double const &_V)
 	{
-		return quality<_Dimension>(_Q.value + _V);
+		return quantity<_Dimension>(_Q.value + _V);
 	}
 
 	template<typename _Dimension>
-	quality<_Dimension> operator+(
+	quantity<_Dimension> operator+(
 		double const &_V,
-		quality<_Dimension> const &_Q)
+		quantity<_Dimension> const &_Q)
 	{
-		return quality<_Dimension>(_V + _Q.value);
+		return quantity<_Dimension>(_V + _Q.value);
 	}
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator+=(
+	inline quantity<_Dimension> & quantity<_Dimension>::operator+=(
 		double const &_V)
 	{
 		this->value += _V;
@@ -131,40 +131,40 @@ namespace le
 	}
 
 	template<typename _Dimension>
-	quality<_Dimension> operator-(
-		quality<_Dimension> const &_Q1,
-		quality<_Dimension> const &_Q2)
+	quantity<_Dimension> operator-(
+		quantity<_Dimension> const &_Q1,
+		quantity<_Dimension> const &_Q2)
 	{
-		return quality<_Dimension>(_Q1.value - _Q2.value);
+		return quantity<_Dimension>(_Q1.value - _Q2.value);
 	}
 
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator-=(
-		quality<_Dimension> const &_Other)
+	inline quantity<_Dimension> & quantity<_Dimension>::operator-=(
+		quantity<_Dimension> const &_Other)
 	{
 		this->value -= _Other.value;
 		return *this;
 	}
 
 	template<typename _Dimension>
-	quality<_Dimension> operator-(
-		quality<_Dimension> const &_Q,
+	quantity<_Dimension> operator-(
+		quantity<_Dimension> const &_Q,
 		double const &_V)
 	{
-		return quality<_Dimension>(_Q.value - _V);
+		return quantity<_Dimension>(_Q.value - _V);
 	}
 
 	template<typename _Dimension>
-	quality<_Dimension> operator-(
+	quantity<_Dimension> operator-(
 		double const &_V,
-		quality<_Dimension> const &_Q)
+		quantity<_Dimension> const &_Q)
 	{
-		return quality<_Dimension>(_V - _Q.value);
+		return quantity<_Dimension>(_V - _Q.value);
 	}
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator-=(
+	inline quantity<_Dimension> & quantity<_Dimension>::operator-=(
 		double const &_V)
 	{
 		this->value -= _V;
@@ -172,101 +172,101 @@ namespace le
 	}
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator*=(scalar const & _S)
+	inline quantity<_Dimension> & quantity<_Dimension>::operator*=(scalar const & _S)
 	{
 		this->value *= _S.value;
 		return *this;
 	}
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator*=(double const & _V)
+	inline quantity<_Dimension> & quantity<_Dimension>::operator*=(double const & _V)
 	{
 		this->value *= _V;
 		return *this;
 	}
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator/=(scalar const & _S)
+	inline quantity<_Dimension> & quantity<_Dimension>::operator/=(scalar const & _S)
 	{
 		this->value /= _S.value;
 		return *this;
 	}
 
 	template<typename _Dimension>
-	inline quality<_Dimension> & quality<_Dimension>::operator/=(double const & _V)
+	inline quantity<_Dimension> & quantity<_Dimension>::operator/=(double const & _V)
 	{
 		this->value /= _V;
 		return *this;
 	}
 
 	template<typename _D1,typename _D2>
-	quality<typename utility::dimension_transform<_D1,_D2,utility::plus>::type>
-		operator*(quality<_D1> const &_Q1, quality<_D2> const &_Q2)
+	quantity<typename utility::dimension_transform<_D1,_D2,utility::plus>::type>
+		operator*(quantity<_D1> const &_Q1, quantity<_D2> const &_Q2)
 	{
-		quality<typename utility::dimension_transform<_D1, _D2, utility::plus>::type>
+		quantity<typename utility::dimension_transform<_D1, _D2, utility::plus>::type>
 			ret(_Q1.value * _Q2.value);
 		return ret;
 	}
 
 	template<typename _D1, typename _D2>
-	quality<typename utility::dimension_transform<_D1, _D2, utility::minus>::type>
-		operator/(quality<_D1> const &_Q1, quality<_D2> const &_Q2)
+	quantity<typename utility::dimension_transform<_D1, _D2, utility::minus>::type>
+		operator/(quantity<_D1> const &_Q1, quantity<_D2> const &_Q2)
 	{
-		quality<typename utility::dimension_transform<_D1, _D2, utility::minus>::type>
+		quantity<typename utility::dimension_transform<_D1, _D2, utility::minus>::type>
 			ret(_Q1.value / _Q2.value);
 		return ret;
 	}
 
 	template<typename _Dimension>
-	bool operator==(quality<_Dimension> const &_L, quality<_Dimension> const &_R)
+	bool operator==(quantity<_Dimension> const &_L, quantity<_Dimension> const &_R)
 	{
 		return _L.value == _R.value;
 	}
 
 	template<typename _Dimension>
-	bool operator>(quality<_Dimension> const &_L, quality<_Dimension> const &_R)
+	bool operator>(quantity<_Dimension> const &_L, quantity<_Dimension> const &_R)
 	{
 		return _L.value > _R.value;
 	}
 
 	template<typename _Dimension>
-	bool operator<(quality<_Dimension> const &_L, quality<_Dimension> const &_R)
+	bool operator<(quantity<_Dimension> const &_L, quantity<_Dimension> const &_R)
 	{
 		return _L.value < _R.value;
 	}
 
 	template<typename _Dimension>
-	bool operator==(quality<_Dimension> const &_Q, double const &_V)
+	bool operator==(quantity<_Dimension> const &_Q, double const &_V)
 	{
 		return _Q.value == _V;
 	}
 
 	template<typename _Dimension>
-	bool operator<(quality<_Dimension> const &_Q, double const &_V)
+	bool operator<(quantity<_Dimension> const &_Q, double const &_V)
 	{
 		return _Q.value < _V;
 	}
 
 	template<typename _Dimension>
-	bool operator>(quality<_Dimension> const &_Q, double const &_V)
+	bool operator>(quantity<_Dimension> const &_Q, double const &_V)
 	{
 		return _Q.value > _V;
 	}
 
 	template<typename _Dimension>
-	bool operator==(double const &_V, quality<_Dimension> const &_Q)
+	bool operator==(double const &_V, quantity<_Dimension> const &_Q)
 	{
 		return _Q.value == _V;
 	}
 
 	template<typename _Dimension>
-	bool operator<(double const &_V, quality<_Dimension> const &_Q)
+	bool operator<(double const &_V, quantity<_Dimension> const &_Q)
 	{
 		return _Q.value < _V;
 	}
 
 	template<typename _Dimension>
-	bool operator>(double const &_V, quality<_Dimension> const &_Q)
+	bool operator>(double const &_V, quantity<_Dimension> const &_Q)
 	{
 		return _Q.value > _V;
 	}
