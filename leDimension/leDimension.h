@@ -82,7 +82,7 @@ namespace le
 	};
 
 	template<typename _Dimension>
-	quantity<_Dimension> operator+(
+	quantity<_Dimension> const operator+(
 		quantity<_Dimension> const &_Q1,
 		quantity<_Dimension> const &_Q2)
 	{
@@ -107,7 +107,7 @@ namespace le
 	}
 
 	template<typename _Dimension>
-	quantity<_Dimension> operator+(
+	quantity<_Dimension> const operator+(
 		quantity<_Dimension> const &_Q,
 		double const &_V)
 	{
@@ -115,7 +115,7 @@ namespace le
 	}
 
 	template<typename _Dimension>
-	quantity<_Dimension> operator+(
+	quantity<_Dimension> const operator+(
 		double const &_V,
 		quantity<_Dimension> const &_Q)
 	{
@@ -131,7 +131,7 @@ namespace le
 	}
 
 	template<typename _Dimension>
-	quantity<_Dimension> operator-(
+	quantity<_Dimension> const operator-(
 		quantity<_Dimension> const &_Q1,
 		quantity<_Dimension> const &_Q2)
 	{
@@ -148,7 +148,7 @@ namespace le
 	}
 
 	template<typename _Dimension>
-	quantity<_Dimension> operator-(
+	quantity<_Dimension> const operator-(
 		quantity<_Dimension> const &_Q,
 		double const &_V)
 	{
@@ -156,7 +156,7 @@ namespace le
 	}
 
 	template<typename _Dimension>
-	quantity<_Dimension> operator-(
+	quantity<_Dimension> const operator-(
 		double const &_V,
 		quantity<_Dimension> const &_Q)
 	{
@@ -200,7 +200,7 @@ namespace le
 	}
 
 	template<typename _D1,typename _D2>
-	quantity<typename utility::dimension_transform<_D1,_D2,utility::plus>::type>
+	quantity<typename utility::dimension_transform<_D1,_D2,utility::plus>::type> const
 		operator*(quantity<_D1> const &_Q1, quantity<_D2> const &_Q2)
 	{
 		quantity<typename utility::dimension_transform<_D1, _D2, utility::plus>::type>
@@ -209,7 +209,7 @@ namespace le
 	}
 
 	template<typename _D1, typename _D2>
-	quantity<typename utility::dimension_transform<_D1, _D2, utility::minus>::type>
+	quantity<typename utility::dimension_transform<_D1, _D2, utility::minus>::type> const
 		operator/(quantity<_D1> const &_Q1, quantity<_D2> const &_Q2)
 	{
 		quantity<typename utility::dimension_transform<_D1, _D2, utility::minus>::type>
